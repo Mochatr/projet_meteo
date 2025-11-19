@@ -7,9 +7,9 @@
                 <title>Meteo</title>
             </head>
             <body>
-                <xsl:for-each select="meteo/mesure">
+                <xsl:for-each select="meteo/mesure[@date='2025-11-17']">
                     <ul>
-                        <li>Date mesure : <xsl:value-of select="@date"/></li> 
+                        <li>Date mesure : <xsl:value-of select="@date"/></li>
                     </ul>
                     <table border="1" width="90%">
                         <tr>
@@ -22,6 +22,14 @@
                                 <td><xsl:value-of select="@temperature"/></td>
                             </tr>
                         </xsl:for-each>
+                        <tr>
+                            <td>Nombre de villes</td>
+                            <td><xsl:value-of select="count(ville)"/></td>
+                        </tr>
+                        <tr>
+                            <td>Temperature Moyenne</td>
+                            <td><xsl:value-of select="avg(ville/@temperature)"/></td>
+                        </tr>
                     </table>
                 </xsl:for-each>
             </body>
